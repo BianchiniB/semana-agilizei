@@ -37,11 +37,9 @@ jobs:
     
     # executar os testes usando o cucumber
     - run: npm run cy:run:cucumber
-    - continue-on-error: true
-    
+      continue-on-error: true
     # gerar o relatorio em html
     - run: npm run report:cucumber
-    - continue-on-error: true
     
     # publicar relatorio em html
     - name: Deploy to GithubPages
