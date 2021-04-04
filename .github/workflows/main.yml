@@ -27,12 +27,10 @@ jobs:
     - uses: actions/checkout@v2
      
     # Setup do Node.JS 
-    - name: Deploy to GithubPages
-        uses: JamesIves/github-pages-deploy-action@3.7.1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: mochawesome-report
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.1.5
+      with:
+        node-version: ${{ matrix.node-version }} 
     
     # instalando as dependencias
     - run: npm install
@@ -45,7 +43,7 @@ jobs:
     
     # publicar relatorio em html
     - name: Deploy to GithubPages
-      uses: JamesIves/github-pages-deploy-action@3.5.9
+      uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
